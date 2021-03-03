@@ -14,7 +14,7 @@ return [
         'add_default_role_on_register' => true,
         'default_role'                 => 'user',
         'default_avatar'               => 'users/default.png',
-        'redirect'                     => '/admin',
+        'redirect'                     => '/admin/profile',
     ],
 
     /*
@@ -133,7 +133,7 @@ return [
                 'icon_class' => 'voyager-person',
             ],
             'voyager::generic.home' => [
-                'route'        => '/',
+                'route'        => 'voyager.profile',
                 'icon_class'   => 'voyager-home',
                 'target_blank' => true,
             ],
@@ -181,7 +181,8 @@ return [
     |
     */
 
-    'primary_color' => '#22A7F0',
+    'primary_color' => env('APP_PRIMARY_COLOR'),
+    'secondary_color' => env('APP_SECONDARY_COLOR'),
 
     'show_dev_tips' => true, // Show development tip "How To Use:" in Menu and Settings
 
