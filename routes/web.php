@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+// Controllers
+use App\Http\Controllers\InventarioController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,4 +24,8 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+
+    Route::get('inventario', [InventarioController::class, 'index'])->name('inventario.index');
+    Route::get('inventario/create', [InventarioController::class, 'create'])->name('inventario.add');
+    Route::post('inventario/store', [InventarioController::class, 'store'])->name('inventario.store');
 });
