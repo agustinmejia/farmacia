@@ -10,7 +10,7 @@ class SucursalProductoLote extends Model
     use HasFactory;
 
     protected $fillable = [
-        'sucursal_id', 'producto_lote_id', 'precio', 'stock'
+        'sucursal_id', 'producto_lote_id', 'precio', 'precio_mayor', 'descuento', 'stock'
     ];
 
     public function sucursal(){

@@ -10,8 +10,12 @@ class ProductoLote extends Model
     use HasFactory;
 
     protected $fillable = [
-        'producto_id', 'nro_lote', 'fecha_vencimiento'
+        'producto_id', 'nro_lote', 'codigo_barras', 'fecha_vencimiento'
     ];
+
+    public function producto(){
+        return $this->belongsTo(Producto::class,'producto_id');
+    }
 
     public function almacen(){
         return $this->hasMany('App\Models\SucursalProductoLote', 'producto_lote_id');

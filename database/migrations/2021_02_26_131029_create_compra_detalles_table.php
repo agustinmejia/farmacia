@@ -15,7 +15,8 @@ class CreateCompraDetallesTable extends Migration
     {
         Schema::create('compra_detalles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('producto_lotes_id')->nullable()->constrained('producto_lotes');
+            $table->foreignId('compra_id')->nullable()->constrained('compras');
+            $table->foreignId('producto_lote_id')->nullable()->constrained('producto_lotes');
             $table->decimal('precio', 10, 2)->nullable()->default(0);
             $table->decimal('descuento', 10, 2)->nullable()->default(0);
             $table->decimal('cantidad', 10, 2)->nullable()->default(0);

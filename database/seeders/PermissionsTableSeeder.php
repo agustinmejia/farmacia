@@ -36,5 +36,7 @@ class PermissionsTableSeeder extends Seeder
         Permission::generateFor('productos');
         Permission::generateFor('sucursals');
         Permission::generateFor('inventario');
+        Permission::generateFor('proveedores');
+        Permission::generateFor('compras');
     }
 }

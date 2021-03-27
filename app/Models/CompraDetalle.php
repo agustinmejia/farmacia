@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class CompraDetalle extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'producto_lote_id', 'precio', 'descuento', 'cantidad'
+    ];
+
+    public function producto_lote(){
+        return $this->belongsTo(ProductoLote::class,'producto_lote_id');
+    }
 }

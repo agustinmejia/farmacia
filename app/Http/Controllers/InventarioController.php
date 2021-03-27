@@ -13,11 +13,18 @@ use App\Models\SucursalProductoLote;
 
 class InventarioController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     //
     public function index(){
-        $productos = Producto::with(['lote.almacen.sucursal'])->where('deleted_at', NULL)->get();
-        // return $productos;
-        return view('inventario.inventario-browse', compact('productos'));
+        $s = request('s');
+        $query = request('s') != '' ? "(nombre like '%$s%' || codigo like '%$s%')" : 1;
+
+        
+        $productos = Producto::with(['lote.almacen.sucursal'])->whereRaw($query)->where('deleted_at', NULL)->paginate(10);
+        return view('inventario.inventario-browse', compact('productos', 's'));
     }
 
     public function create(){
@@ -41,6 +48,8 @@ class InventarioController extends Controller
                 'sucursal_id' => $request->sucursal_id,
                 'producto_lote_id' => $producto_lote->id,
                 'precio' => $request->precio,
+                'precio_mayor' => $request->precio_mayor,
+                'descuento' => $request->descuento,
                 'stock' => $request->stock
             ]);
 

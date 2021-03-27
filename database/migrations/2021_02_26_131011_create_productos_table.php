@@ -21,7 +21,7 @@ class CreateProductosTable extends Migration
             $table->string('nombre')->nullable();
             $table->text('descripcion')->nullable();
             $table->string('logo')->nullable()->default('../img/producto_default.png');
-            $table->smallInteger('status')->nullable()->default(1);
+            $table->smallInteger('estado')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

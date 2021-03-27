@@ -16,6 +16,8 @@ class CreateComprasTable extends Migration
         Schema::create('compras', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained('users');
+            $table->foreignId('proveedore_id')->nullable()->constrained('proveedores');
+            $table->decimal('descuento', 10, 2)->nullable()->default(0);
             $table->text('observaciones')->nullable();
             $table->timestamps();
             $table->softDeletes();
