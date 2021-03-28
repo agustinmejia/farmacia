@@ -15,7 +15,8 @@ class CreateVentaDetallesTable extends Migration
     {
         Schema::create('venta_detalles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('producto_lote_id')->nullable()->constrained('producto_lotes');
+            $table->foreignId('venta_id')->nullable()->constrained('ventas');
+            $table->foreignId('sucursal_producto_lote_id')->nullable()->constrained('sucursal_producto_lotes');
             $table->decimal('precio', 10, 2)->nullable()->default(0);
             $table->decimal('descuento', 10, 2)->nullable()->default(0);
             $table->decimal('cantidad', 10, 2)->nullable()->default(0);

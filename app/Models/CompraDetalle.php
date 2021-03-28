@@ -10,7 +10,7 @@ class CompraDetalle extends Model
     use HasFactory;
 
     protected $fillable = [
-        'producto_lote_id', 'precio', 'descuento', 'cantidad'
+        'producto_lote_id', 'compra_id', 'precio', 'descuento', 'cantidad'
     ];
 
     public function producto_lote(){

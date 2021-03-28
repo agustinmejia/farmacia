@@ -17,6 +17,7 @@ class CreateComprasTable extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained('users');
             $table->foreignId('proveedore_id')->nullable()->constrained('proveedores');
+            $table->foreignId('sucursal_id')->nullable()->constrained('sucursals');
             $table->decimal('descuento', 10, 2)->nullable()->default(0);
             $table->text('observaciones')->nullable();
             $table->timestamps();

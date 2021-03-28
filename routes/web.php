@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 // Controllers
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\ComprasController;
+use App\Http\Controllers\VentasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,4 +36,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('compras', [ComprasController::class, 'index'])->name('compras.index');
     Route::get('compras/create', [ComprasController::class, 'create'])->name('compras.add');
     Route::post('compras/store', [ComprasController::class, 'store'])->name('compras.store');
+
+    // Ventas
+    Route::get('ventas', [VentasController::class, 'index'])->name('ventas.index');
+    Route::get('ventas/change/branch/{id}', [VentasController::class, 'change_branch']);
+    Route::get('ventas/create', [VentasController::class, 'create'])->name('ventas.add');
+    Route::post('ventas/store', [VentasController::class, 'store'])->name('ventas.store');
 });

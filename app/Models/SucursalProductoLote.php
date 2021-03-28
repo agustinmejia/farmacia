@@ -16,4 +16,8 @@ class SucursalProductoLote extends Model
     public function sucursal(){
         return $this->hasOne('App\Models\Sucursal', 'id');
     }
+
+    public function lote(){
+        return $this->belongsTo('App\Models\ProductoLote', 'producto_lote_id');
+    }
 }

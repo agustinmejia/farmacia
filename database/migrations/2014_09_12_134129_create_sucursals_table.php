@@ -15,10 +15,9 @@ class CreateSucursalsTable extends Migration
     {
         Schema::create('sucursals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained('users');
             $table->string('nombre')->nullable();
             $table->string('telefonos')->nullable();
-            $table->string('direccion')->nullable();
+            $table->text('direccion')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

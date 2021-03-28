@@ -1,14 +1,14 @@
 @extends('voyager::master')
 
-@section('page_title', 'Viendo Compras')
+@section('page_title', 'Viendo Ventas')
 
 @if(auth()->user()->hasPermission('browse_proveedores'))
     @section('page_header')
         <div class="container-fluid">
             <h1 class="page-title">
-                <i class="voyager-file-text"></i> Compras
+                <i class="voyager-basket"></i> Ventas
             </h1>
-            <a href="{{ route('compras.add') }}" class="btn btn-success btn-add-new">
+            <a href="{{ route('ventas.add') }}" class="btn btn-success btn-add-new">
                 <i class="voyager-plus"></i> <span>Añadir</span>
             </a>
         </div>

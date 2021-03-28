@@ -30,12 +30,12 @@ class DataTypesTableSeeder extends Seeder
                 'model_name' => 'TCG\\Voyager\\Models\\User',
                 'policy_name' => 'TCG\\Voyager\\Policies\\UserPolicy',
                 'controller' => 'TCG\\Voyager\\Http\\Controllers\\VoyagerUserController',
-                'description' => '',
+                'description' => NULL,
                 'generate_permissions' => 1,
                 'server_side' => 0,
-                'details' => NULL,
+                'details' => '{"order_column":null,"order_display_column":null,"order_direction":"desc","default_search_key":null,"scope":null}',
                 'created_at' => '2021-02-26 13:50:49',
-                'updated_at' => '2021-02-26 13:50:49',
+                'updated_at' => '2021-03-27 21:14:40',
             ),
             1 => 
             array (
@@ -143,7 +143,7 @@ class DataTypesTableSeeder extends Seeder
                 'server_side' => 1,
                 'details' => '{"order_column":"id","order_display_column":"nombre","order_direction":"asc","default_search_key":"nombre","scope":null}',
                 'created_at' => '2021-03-03 01:25:20',
-                'updated_at' => '2021-03-03 01:28:57',
+                'updated_at' => '2021-03-27 18:04:15',
             ),
             7 => 
             array (
@@ -162,6 +162,24 @@ class DataTypesTableSeeder extends Seeder
                 'details' => '{"order_column":null,"order_display_column":null,"order_direction":"asc","default_search_key":null,"scope":null}',
                 'created_at' => '2021-03-27 01:59:24',
                 'updated_at' => '2021-03-27 02:02:43',
+            ),
+            8 => 
+            array (
+                'id' => 11,
+                'name' => 'clientes',
+                'slug' => 'clientes',
+                'display_name_singular' => 'Cliente',
+                'display_name_plural' => 'Clientes',
+                'icon' => 'voyager-person',
+                'model_name' => 'App\\Models\\Cliente',
+                'policy_name' => NULL,
+                'controller' => NULL,
+                'description' => NULL,
+                'generate_permissions' => 1,
+                'server_side' => 1,
+                'details' => '{"order_column":null,"order_display_column":null,"order_direction":"asc","default_search_key":null}',
+                'created_at' => '2021-03-27 17:31:23',
+                'updated_at' => '2021-03-27 17:31:23',
             ),
         ));
         

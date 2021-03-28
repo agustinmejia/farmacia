@@ -32,7 +32,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit' => 0,
                 'add' => 0,
                 'delete' => 0,
-                'details' => NULL,
+                'details' => '{}',
                 'order' => 1,
             ),
             1 => 
@@ -48,7 +48,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit' => 1,
                 'add' => 1,
                 'delete' => 1,
-                'details' => NULL,
+                'details' => '{}',
                 'order' => 2,
             ),
             2 => 
@@ -64,7 +64,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit' => 1,
                 'add' => 1,
                 'delete' => 1,
-                'details' => NULL,
+                'details' => '{}',
                 'order' => 3,
             ),
             3 => 
@@ -80,8 +80,8 @@ class DataRowsTableSeeder extends Seeder
                 'edit' => 1,
                 'add' => 1,
                 'delete' => 0,
-                'details' => NULL,
-                'order' => 4,
+                'details' => '{}',
+                'order' => 5,
             ),
             4 => 
             array (
@@ -96,8 +96,8 @@ class DataRowsTableSeeder extends Seeder
                 'edit' => 0,
                 'add' => 0,
                 'delete' => 0,
-                'details' => NULL,
-                'order' => 5,
+                'details' => '{}',
+                'order' => 6,
             ),
             5 => 
             array (
@@ -112,8 +112,8 @@ class DataRowsTableSeeder extends Seeder
                 'edit' => 0,
                 'add' => 0,
                 'delete' => 0,
-                'details' => NULL,
-                'order' => 6,
+                'details' => '{}',
+                'order' => 14,
             ),
             6 => 
             array (
@@ -128,8 +128,8 @@ class DataRowsTableSeeder extends Seeder
                 'edit' => 0,
                 'add' => 0,
                 'delete' => 0,
-                'details' => NULL,
-                'order' => 7,
+                'details' => '{}',
+                'order' => 15,
             ),
             7 => 
             array (
@@ -144,7 +144,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit' => 1,
                 'add' => 1,
                 'delete' => 1,
-                'details' => NULL,
+                'details' => '{}',
                 'order' => 8,
             ),
             8 => 
@@ -160,7 +160,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit' => 1,
                 'add' => 1,
                 'delete' => 0,
-                'details' => '{"model":"TCG\\\\Voyager\\\\Models\\\\Role","table":"roles","type":"belongsTo","column":"role_id","key":"id","label":"display_name","pivot_table":"roles","pivot":0}',
+                'details' => '{"model":"TCG\\\\Voyager\\\\Models\\\\Role","table":"roles","type":"belongsTo","column":"role_id","key":"id","label":"display_name","pivot_table":"roles","pivot":"0","taggable":"0"}',
                 'order' => 10,
             ),
             9 => 
@@ -171,11 +171,11 @@ class DataRowsTableSeeder extends Seeder
                 'type' => 'relationship',
                 'display_name' => 'Roles',
                 'required' => 0,
-                'browse' => 1,
+                'browse' => 0,
                 'read' => 1,
                 'edit' => 1,
                 'add' => 1,
-                'delete' => 0,
+                'delete' => 1,
                 'details' => '{"model":"TCG\\\\Voyager\\\\Models\\\\Role","table":"roles","type":"belongsToMany","column":"id","key":"id","label":"display_name","pivot_table":"user_roles","pivot":"1","taggable":"0"}',
                 'order' => 11,
             ),
@@ -192,7 +192,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit' => 0,
                 'add' => 0,
                 'delete' => 0,
-                'details' => NULL,
+                'details' => '{}',
                 'order' => 12,
             ),
             11 => 
@@ -346,13 +346,13 @@ class DataRowsTableSeeder extends Seeder
                 'field' => 'role_id',
                 'type' => 'text',
                 'display_name' => 'Rol',
-                'required' => 1,
+                'required' => 0,
                 'browse' => 1,
                 'read' => 1,
                 'edit' => 1,
                 'add' => 1,
                 'delete' => 1,
-                'details' => NULL,
+                'details' => '{}',
                 'order' => 9,
             ),
             21 => 
@@ -805,22 +805,6 @@ class DataRowsTableSeeder extends Seeder
             ),
             49 => 
             array (
-                'id' => 50,
-                'data_type_id' => 8,
-                'field' => 'user_id',
-                'type' => 'text',
-                'display_name' => 'User Id',
-                'required' => 0,
-                'browse' => 1,
-                'read' => 1,
-                'edit' => 1,
-                'add' => 1,
-                'delete' => 1,
-                'details' => '{}',
-                'order' => 2,
-            ),
-            50 => 
-            array (
                 'id' => 51,
                 'data_type_id' => 8,
                 'field' => 'nombre',
@@ -835,7 +819,7 @@ class DataRowsTableSeeder extends Seeder
                 'details' => '{"display":{"width":6},"validation":{"rule":"required|max:191","messages":{"required":"El campo :attribute es requerido.","max":"El campo :attribute debe tener :max. caracteres como m\\u00e1ximo."}}}',
                 'order' => 3,
             ),
-            51 => 
+            50 => 
             array (
                 'id' => 52,
                 'data_type_id' => 8,
@@ -851,7 +835,7 @@ class DataRowsTableSeeder extends Seeder
                 'details' => '{"display":{"width":6},"validation":{"rule":"required|max:191","messages":{"required":"El campo :attribute es requerido.","max":"El campo :attribute debe tener :max. caracteres como m\\u00e1ximo."}}}',
                 'order' => 4,
             ),
-            52 => 
+            51 => 
             array (
                 'id' => 53,
                 'data_type_id' => 8,
@@ -867,7 +851,7 @@ class DataRowsTableSeeder extends Seeder
                 'details' => '{}',
                 'order' => 5,
             ),
-            53 => 
+            52 => 
             array (
                 'id' => 54,
                 'data_type_id' => 8,
@@ -883,7 +867,7 @@ class DataRowsTableSeeder extends Seeder
                 'details' => '{}',
                 'order' => 6,
             ),
-            54 => 
+            53 => 
             array (
                 'id' => 55,
                 'data_type_id' => 8,
@@ -899,7 +883,7 @@ class DataRowsTableSeeder extends Seeder
                 'details' => '{}',
                 'order' => 7,
             ),
-            55 => 
+            54 => 
             array (
                 'id' => 56,
                 'data_type_id' => 8,
@@ -915,23 +899,7 @@ class DataRowsTableSeeder extends Seeder
                 'details' => '{}',
                 'order' => 8,
             ),
-            56 => 
-            array (
-                'id' => 57,
-                'data_type_id' => 8,
-                'field' => 'sucursal_belongsto_user_relationship',
-                'type' => 'relationship',
-                'display_name' => 'Encargado',
-                'required' => 0,
-                'browse' => 1,
-                'read' => 1,
-                'edit' => 1,
-                'add' => 1,
-                'delete' => 1,
-                'details' => '{"model":"TCG\\\\Voyager\\\\Models\\\\User","table":"users","type":"belongsTo","column":"user_id","key":"id","label":"name","pivot_table":"compra_detalles","pivot":"0","taggable":"0"}',
-                'order' => 9,
-            ),
-            57 => 
+            55 => 
             array (
                 'id' => 58,
                 'data_type_id' => 10,
@@ -947,7 +915,7 @@ class DataRowsTableSeeder extends Seeder
                 'details' => '{}',
                 'order' => 1,
             ),
-            58 => 
+            56 => 
             array (
                 'id' => 59,
                 'data_type_id' => 10,
@@ -963,7 +931,7 @@ class DataRowsTableSeeder extends Seeder
                 'details' => '{"display":{"width":6},"validation":{"rule":"required|max:191","messages":{"required":"El campo :attribute es requerido.","max":"El campo :attribute debe tener :max. caracteres como m\\u00e1ximo."}}}',
                 'order' => 2,
             ),
-            59 => 
+            57 => 
             array (
                 'id' => 60,
                 'data_type_id' => 10,
@@ -979,7 +947,7 @@ class DataRowsTableSeeder extends Seeder
                 'details' => '{"display":{"width":6}}',
                 'order' => 3,
             ),
-            60 => 
+            58 => 
             array (
                 'id' => 61,
                 'data_type_id' => 10,
@@ -995,7 +963,7 @@ class DataRowsTableSeeder extends Seeder
                 'details' => '{"display":{"width":6}}',
                 'order' => 4,
             ),
-            61 => 
+            59 => 
             array (
                 'id' => 62,
                 'data_type_id' => 10,
@@ -1011,7 +979,7 @@ class DataRowsTableSeeder extends Seeder
                 'details' => '{}',
                 'order' => 6,
             ),
-            62 => 
+            60 => 
             array (
                 'id' => 63,
                 'data_type_id' => 10,
@@ -1027,7 +995,7 @@ class DataRowsTableSeeder extends Seeder
                 'details' => '{"display":{"width":6}}',
                 'order' => 5,
             ),
-            63 => 
+            61 => 
             array (
                 'id' => 64,
                 'data_type_id' => 10,
@@ -1043,7 +1011,7 @@ class DataRowsTableSeeder extends Seeder
                 'details' => '{}',
                 'order' => 7,
             ),
-            64 => 
+            62 => 
             array (
                 'id' => 65,
                 'data_type_id' => 10,
@@ -1059,7 +1027,7 @@ class DataRowsTableSeeder extends Seeder
                 'details' => '{}',
                 'order' => 8,
             ),
-            65 => 
+            63 => 
             array (
                 'id' => 66,
                 'data_type_id' => 10,
@@ -1074,6 +1042,182 @@ class DataRowsTableSeeder extends Seeder
                 'delete' => 0,
                 'details' => '{}',
                 'order' => 9,
+            ),
+            64 => 
+            array (
+                'id' => 67,
+                'data_type_id' => 11,
+                'field' => 'id',
+                'type' => 'text',
+                'display_name' => 'Id',
+                'required' => 1,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 0,
+                'add' => 0,
+                'delete' => 0,
+                'details' => '{}',
+                'order' => 1,
+            ),
+            65 => 
+            array (
+                'id' => 68,
+                'data_type_id' => 11,
+                'field' => 'nombre_completo',
+                'type' => 'text',
+                'display_name' => 'Nombre Completo',
+                'required' => 0,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 1,
+                'details' => '{"validation":{"rule":"required|max:191","messages":{"required":"El campo :attribute es requerido.","max":"El campo :attribute debe tener :max. caracteres como m\\u00e1ximo."}}}',
+                'order' => 2,
+            ),
+            66 => 
+            array (
+                'id' => 69,
+                'data_type_id' => 11,
+                'field' => 'nit',
+                'type' => 'text',
+                'display_name' => 'NIT',
+                'required' => 0,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 1,
+                'details' => '{"display":{"width":6}}',
+                'order' => 3,
+            ),
+            67 => 
+            array (
+                'id' => 70,
+                'data_type_id' => 11,
+                'field' => 'telefono',
+                'type' => 'text',
+                'display_name' => 'Telefono',
+                'required' => 0,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 1,
+                'details' => '{"display":{"width":6}}',
+                'order' => 4,
+            ),
+            68 => 
+            array (
+                'id' => 71,
+                'data_type_id' => 11,
+                'field' => 'direccion',
+                'type' => 'text_area',
+                'display_name' => 'Dirección',
+                'required' => 0,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 1,
+                'details' => '{}',
+                'order' => 5,
+            ),
+            69 => 
+            array (
+                'id' => 72,
+                'data_type_id' => 11,
+                'field' => 'created_at',
+                'type' => 'timestamp',
+                'display_name' => 'Creado',
+                'required' => 0,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 0,
+                'add' => 0,
+                'delete' => 0,
+                'details' => '{}',
+                'order' => 6,
+            ),
+            70 => 
+            array (
+                'id' => 73,
+                'data_type_id' => 11,
+                'field' => 'updated_at',
+                'type' => 'timestamp',
+                'display_name' => 'Updated At',
+                'required' => 0,
+                'browse' => 0,
+                'read' => 0,
+                'edit' => 0,
+                'add' => 0,
+                'delete' => 0,
+                'details' => '{}',
+                'order' => 7,
+            ),
+            71 => 
+            array (
+                'id' => 74,
+                'data_type_id' => 11,
+                'field' => 'deleted_at',
+                'type' => 'timestamp',
+                'display_name' => 'Deleted At',
+                'required' => 0,
+                'browse' => 0,
+                'read' => 0,
+                'edit' => 0,
+                'add' => 0,
+                'delete' => 0,
+                'details' => '{}',
+                'order' => 8,
+            ),
+            72 => 
+            array (
+                'id' => 75,
+                'data_type_id' => 1,
+                'field' => 'user_belongsto_sucursal_relationship',
+                'type' => 'relationship',
+                'display_name' => 'sucursal',
+                'required' => 0,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 1,
+                'details' => '{"model":"App\\\\Models\\\\Sucursal","table":"sucursals","type":"belongsTo","column":"sucursal_id","key":"id","label":"nombre","pivot_table":"clientes","pivot":"0","taggable":"0"}',
+                'order' => 13,
+            ),
+            73 => 
+            array (
+                'id' => 76,
+                'data_type_id' => 1,
+                'field' => 'sucursal_id',
+                'type' => 'text',
+                'display_name' => 'Sucursal Id',
+                'required' => 0,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 1,
+                'details' => '{}',
+                'order' => 4,
+            ),
+            74 => 
+            array (
+                'id' => 77,
+                'data_type_id' => 1,
+                'field' => 'email_verified_at',
+                'type' => 'timestamp',
+                'display_name' => 'Email Verified At',
+                'required' => 0,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 1,
+                'details' => '{}',
+                'order' => 7,
             ),
         ));
         
