@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\ComprasController;
 use App\Http\Controllers\VentasController;
+use App\Http\Controllers\CajasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,4 +43,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('ventas/change/branch/{id}', [VentasController::class, 'change_branch']);
     Route::get('ventas/create', [VentasController::class, 'create'])->name('ventas.add');
     Route::post('ventas/store', [VentasController::class, 'store'])->name('ventas.store');
+
+    // Cajas
+    Route::resource('cajas', CajasController::class);
+    Route::get('cajas/close/{id}', [CajasController::class, 'close'])->name('cajas.close');
+    Route::post('cajas/close/store', [CajasController::class, 'close_store'])->name('cajas.close.store');
+    Route::post('cajas/store/detalle', [CajasController::class, 'store_detalle'])->name('cajas.store.detalle');
 });

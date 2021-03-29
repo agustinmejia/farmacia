@@ -74,11 +74,11 @@ class ComprasController extends Controller
             }
 
             DB::commit();
-            return redirect()->route('compras.index')->with(['message' => 'Producto registrado correctamente.', 'alert-type' => 'success']);
+            return redirect()->route('compras.index')->with(['message' => 'Compra registrada correctamente.', 'alert-type' => 'success']);
 
         } catch (\Throwable $th) {
             DB::rollback();
-            return redirect()->route('compras.add')->with(['message' => 'Ocurrió un error al registrar el producto.', 'alert-type' => 'error']);
+            return redirect()->route('compras.add')->with(['message' => 'Ocurrió un error al registrar la compra.', 'alert-type' => 'error']);
 
         }
     }

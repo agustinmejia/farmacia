@@ -6,15 +6,20 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
+// Controllers
+use App\Http\Controllers\CajasController;
+
 // Models
 use App\Models\User;
 use App\Models\Sucursal;
 use App\Models\Producto;
 use App\Models\ProductoLote;
 use App\Models\Cliente;
-use App\Models\Compra;
-use App\Models\CompraDetalle;
+use App\Models\Venta;
+use App\Models\VentaDetalle;
 use App\Models\SucursalProductoLote;
+use App\Models\Caja;
+use App\Models\CajaDetalle;
 
 class VentasController extends Controller
 {
@@ -26,13 +31,14 @@ class VentasController extends Controller
         $s = request('s');
         $query = request('s') != '' ? "(nombre like '%$s%' || codigo like '%$s%')" : 1;
 
-        $compras = Compra::with(['detalle.producto_lote.producto', 'proveedor', 'user'])->orderBy('id', 'DESC')->paginate();
-        return view('ventas.ventas-browse', compact('compras', 's'));
+        $ventas = Venta::with(['detalle.sucursal_producto.lote.producto', 'cliente', 'user'])->orderBy('id', 'DESC')->paginate();
+        return view('ventas.ventas-browse', compact('ventas', 's'));
     }
 
     public function create(){
         $sucursales = Sucursal::where('deleted_at', NULL)->get();
         $clientes = Cliente::where('deleted_at', NULL)->get();
+        $caja_abierta = Caja::where('user_id', Auth::user()->id)->where('estado', 1)->where('deleted_at', NULL)->first();
 
         // Obetener sucursal del usuario
         $sucursal_id = Auth::user()->sucursal_id;
@@ -42,54 +48,46 @@ class VentasController extends Controller
         }
 
         // $productos = Producto::where('deleted_at', NULL)->where('estado', 1)->get();
-        $productos = SucursalProductoLote::with(['lote.producto'])->where('sucursal_id', $sucursal_id)->get();
+        $productos = SucursalProductoLote::with(['lote.producto'])->where('sucursal_id', $sucursal_id)->where('stock', '>', 0)->get();
         // dd($productos);
-        return view('ventas.ventas-add', compact('sucursales', 'sucursal_id', 'clientes', 'productos'));
+        return view('ventas.ventas-add', compact('sucursales', 'sucursal_id', 'clientes', 'productos', 'caja_abierta'));
     }
 
     public function store(Request $request){
     
-        // dd($request);
         DB::beginTransaction();
         try {
-
-            $compra = Compra::create([
+            $venta = Venta::create([
                 'user_id' => Auth::user()->id,
-                'proveedore_id' => $request->proveedor_id,
-                'descuento' => $request->descuento_extra,
+                'cliente_id' => $request->cliente_id,
+                'sucursal_id' => $request->sucursal_id,
                 'observaciones' => $request->observaciones
             ]);
 
+            $total = 0;
+
             for ($i=0; $i < count($request->producto_id); $i++) { 
-                $producto_lote = ProductoLote::create([
-                    'producto_id' => $request->producto_id[$i],
-                    'nro_lote' => $request->nro_lote[$i],
-                    'fecha_vencimiento' => $request->fecha_vencimiento[$i],
-                ]);
-
-                $sucursal_producto_lote = SucursalProductoLote::create([
-                    'sucursal_id' => $request->sucursal_id,
-                    'producto_lote_id' => $producto_lote->id,
+                VentaDetalle::create([
+                    'venta_id' => $venta->id,
+                    'sucursal_producto_lote_id' => $request->producto_id[$i],
                     'precio' => $request->precio_venta[$i],
-                    'stock' => $request->cantidad[$i]
-                ]);
-
-                CompraDetalle::create([
-                    'compra_id' => $compra->id,
-                    'producto_lote_id' => $producto_lote->id,
-                    'precio' => $request->precio_compra[$i],
-                    'descuento' => $request->descuento[$i],
                     'cantidad' => $request->cantidad[$i]
                 ]);
+
+                $total += $request->precio_venta[$i] * $request->cantidad[$i];
+
+                $this->quitar_stock($request->producto_id[$i], $request->cantidad[$i]);
             }
 
+            // Registrar en caja
+            (new CajasController)->registro_caja($request->caja_id, 'Venta realizada: Nº '.$venta->id, $total, 1, $venta->id);
+
             DB::commit();
-            return redirect()->route('ventas.index')->with(['message' => 'Producto registrado correctamente.', 'alert-type' => 'success']);
+            return redirect()->route('ventas.add')->with(['message' => 'Venta registrada correctamente.', 'alert-type' => 'success']);
 
         } catch (\Throwable $th) {
             DB::rollback();
-            return redirect()->route('ventas.add')->with(['message' => 'Ocurrió un error al registrar el producto.', 'alert-type' => 'error']);
-
+            return redirect()->route('ventas.add')->with(['message' => 'Ocurrió un error al registrar la venta.', 'alert-type' => 'error']);
         }
     }
 
@@ -103,5 +101,12 @@ class VentasController extends Controller
         } catch (\Throwable $th) {
             return redirect('admin/ventas/create')->with(['message' => 'Ocurrió un error, intente otra vez.', 'alert-type' => 'error']);
         }
+    }
+
+    public function quitar_stock($sucursal_producto_lotes_id, $cantidad){
+        $lote = SucursalProductoLote::findOrFail($sucursal_producto_lotes_id);
+        $stock = $lote->stock - $cantidad;
+        $lote->stock = $stock > 0 ? $stock : 0;
+        $lote->save();
     }
 }

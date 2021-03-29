@@ -64,6 +64,7 @@
                                                         <th class="text-right">Acciones</th>
                                                     </tr>
                                                     @forelse($producto->lote as $lote)
+                                                        
                                                         @php
                                                             $stock = 0;
                                                             $precio = 0;
@@ -78,15 +79,17 @@
                                                                 $label_date = 'text-warning';
                                                             }
                                                         @endphp
-                                                        <tr>
-                                                            <td>{{ $lote->nro_lote }}</td>
-                                                            <td>{{ $stock }}</td>
-                                                            <td>{{ $precio }}</td>
-                                                            <td class="{{ $label_date }}"><b>{{ date('d-m-Y', strtotime($lote->fecha_vencimiento)) }} | <small>{{ \Carbon\Carbon::parse($lote->fecha_vencimiento)->diffForHumans() }}</small></b></td>
-                                                            <td class="text-right">
-                                                                <button class="btn btn-link text-primary" style="padding: 0px; margin: 0px"><span class="text-primary">Editar</span></button>
-                                                            </td>
-                                                        </tr>
+                                                        @if ($stock > 0)
+                                                            <tr>
+                                                                <td>{{ $lote->nro_lote }}</td>
+                                                                <td>{{ $stock }}</td>
+                                                                <td>{{ $precio }}</td>
+                                                                <td class="{{ $label_date }}"><b>{{ date('d-m-Y', strtotime($lote->fecha_vencimiento)) }} | <small>{{ \Carbon\Carbon::parse($lote->fecha_vencimiento)->diffForHumans() }}</small></b></td>
+                                                                <td class="text-right">
+                                                                    <button class="btn btn-link text-primary" style="padding: 0px; margin: 0px"><span class="text-primary">Editar</span></button>
+                                                                </td>
+                                                            </tr>
+                                                        @endif
                                                     @empty
                                                         <tr>
                                                             <td colspan="5"><h6 class="text-center">No hay inventario</h6></td>
