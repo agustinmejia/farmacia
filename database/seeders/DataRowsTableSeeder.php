@@ -784,7 +784,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit' => 1,
                 'add' => 1,
                 'delete' => 1,
-                'details' => '{"model":"App\\\\Models\\\\LInea","table":"lineas","type":"belongsTo","column":"linea_id","key":"id","label":"nombre","pivot_table":"compra_detalles","pivot":"0","taggable":"0"}',
+                'details' => '{"model":"App\\\\Models\\\\Linea","table":"lineas","type":"belongsTo","column":"linea_id","key":"id","label":"nombre","pivot_table":"compra_detalles","pivot":"0","taggable":"0"}',
                 'order' => 13,
             ),
             48 => 
